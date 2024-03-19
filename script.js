@@ -46,22 +46,43 @@ function createProductCard(product) {
     return productCard;
 }
 
+function filterByCategory(category) {
+    return productList.filter(product => product.category === category);
+}
+
 document.getElementById('sortSelect').addEventListener('change', () => {
     const sortOrder = document.getElementById('sortSelect').value;
-    const sortedProducts = [...productList];
-    if (sortOrder === "asc") {
-        sortedProducts.sort((a, b) => a.price - b.price);
-    } else if (sortOrder === "desc") {
-        sortedProducts.sort((a, b) => b.price - a.price);
+    const selectedCategory = document.getElementById('categoryFilter').value;
+
+    let filteredProducts = productList;
+    if (selectedCategory) {
+        filteredProducts = filterByCategory(selectedCategory);
     }
-    displayProducts(sortedProducts);
+
+    if (sortOrder === "asc") {
+        filteredProducts.sort((a, b) => a.price - b.price);
+    } else if (sortOrder === "desc") {
+        filteredProducts.sort((a, b) => b.price - a.price);
+    }
+
+    displayProducts(filteredProducts);
 });
 
 document.getElementById('categoryFilter').addEventListener('change', () => {
     const selectedCategory = document.getElementById('categoryFilter').value;
-    const filteredProducts = selectedCategory ?
-        productList.filter(product => product.category === selectedCategory) :
-        productList;
+    const sortOrder = document.getElementById('sortSelect').value;
+
+    let filteredProducts = productList;
+    if (selectedCategory) {
+        filteredProducts = filterByCategory(selectedCategory);
+    }
+
+    if (sortOrder === "asc") {
+        filteredProducts.sort((a, b) => a.price - b.price);
+    } else if (sortOrder === "desc") {
+        filteredProducts.sort((a, b) => b.price - a.price);
+    }
+
     displayProducts(filteredProducts);
 });
 
