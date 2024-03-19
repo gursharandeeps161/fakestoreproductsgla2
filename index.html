@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Products from Fake Store</h1>
+        <label for="sort">Sort By Price:</label>
+        <select id="sortSelect">
+            <option value=""></option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+        <label for="category">Filter By Category:</label>
+        <select id="categoryFilter">
+            <option value="">All</option>
+            <option value="men's clothing">Men's Clothing</option>
+            <option value="jewelery">Jewelry</option>
+            <option value="electronics">Electronics</option>
+            <option value="women's clothing">Women's Clothing</option>
+        </select>
+    </header>
+    <div id="product-container"></div>
+    <script src="script.js"></script>
+</body>
+</html>
